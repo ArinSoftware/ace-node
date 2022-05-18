@@ -1,5 +1,9 @@
 const express = require('express');
+const router = require('./router');
 const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -7,8 +11,6 @@ app.set('view engine', 'ejs');
 // set statis files folder
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+app.use('/', router);
 
 app.listen(3000);
