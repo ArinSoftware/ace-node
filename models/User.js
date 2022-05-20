@@ -1,8 +1,39 @@
+const usersCollection = require('../db').collection('users');
 const validator = require('validator');
 
 let User = function (data) {
   this.data = data;
   this.errors = [];
+};
+
+User.prototype.cleanUp = function () {
+  console.log('THIS DATA', this.data);
+  const { firstname, lastname, username, email, password } = this.data;
+  if (typeof firstname != 'string') {
+    firstname = '';
+  }
+  if (typeof lastname != 'string') {
+    lastname = '';
+  }
+  if (typeof username != 'string') {
+    username = '';
+  }
+  if (typeof email != 'string') {
+    email = '';
+  }
+  if (typeof password != 'string') {
+    password = '';
+  }
+
+  //get rid of any unnecessary properties
+
+  this.data = {
+    firstname: this.data.firstname.trim().toLowerCase(),
+    lastname: this.data.lastname.trim().toLowerCase(),
+    username: this.data.username.trim().toLowerCase(),
+    email: this.data.email.trim().toLowerCase(),
+    password: this.data.password,
+  };
 };
 
 User.prototype.validate = function () {
@@ -41,7 +72,12 @@ User.prototype.validate = function () {
 
 User.prototype.register = function () {
   // Validate user data
+  this.cleanUp();
   this.validate();
+
+  if (!this.errors.length) {
+    usersCollection.insertOne(this.data);
+  }
 };
 
 module.exports = User;
