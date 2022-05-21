@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const usersCollection = require('../db').collection('users');
 const validator = require('validator');
 
@@ -7,7 +8,6 @@ let User = function (data) {
 };
 
 User.prototype.cleanUp = function () {
-  console.log('THIS DATA', this.data);
   const { firstname, lastname, username, email, password } = this.data;
   if (typeof firstname != 'string') {
     firstname = '';
@@ -70,12 +70,35 @@ User.prototype.validate = function () {
     this.errors.push('Username must be less than 25 characters');
 };
 
+User.prototype.login = function () {
+  return new Promise((resolve, reject) => {
+    usersCollection
+      .findOne({ username: this.data.username })
+      .then((attemptedUser) => {
+        if (
+          attemptedUser &&
+          bcrypt.compareSync(this.data.password, attemptedUser.password)
+        ) {
+          resolve('Congrats!!');
+        } else {
+          reject('Invalid username / password');
+        }
+      })
+      .catch(() => {
+        reject('Please try again later');
+      });
+  });
+};
+
 User.prototype.register = function () {
   // Validate user data
   this.cleanUp();
   this.validate();
 
   if (!this.errors.length) {
+    // hash password
+    let salt = bcrypt.genSaltSync(10);
+    this.data.password = bcrypt.hashSync(this.data.password, salt);
     usersCollection.insertOne(this.data);
   }
 };
