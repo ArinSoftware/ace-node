@@ -71,32 +71,47 @@ User.prototype.validate = function () {
 };
 
 User.prototype.login = function () {
-  return new Promise((resolve, reject) => {
-    usersCollection
-      .findOne({ username: this.data.username })
-      .then((attemptedUser) => {
-        if (
-          attemptedUser &&
-          bcrypt.compareSync(this.data.password, attemptedUser.password)
-        ) {
-          resolve('Congrats!!');
-        } else {
-          reject('Invalid username / password');
-        }
-      })
-      .catch(() => {
-        reject('Please try again later');
-      });
-  });
+  usersCollection.findOne(
+    { username: this.data.username },
+    (err, attemptedUser) => {
+      if (
+        attemptedUser &&
+        bcrypt.compareSync(this.data.password, attemptedUser.password)
+      ) {
+        console.log('attemptedUser', attemptedUser);
+        req.session.userID = attemptedUser._id;
+        console.log('req.session', req.session);
+        res.redirect('/');
+      } else {
+        res.send('Invalid Username & password');
+      }
+    }
+  );
+
+  //this.cleanUp();
+  usersCollection
+    .findOne({ username: this.data.username })
+    .then((attemptedUser) => {
+      if (
+        attemptedUser &&
+        bcrypt.compareSync(this.data.password, attemptedUser.password)
+      ) {
+        console.log('attemptedUser', attemptedUser);
+        req.session.userID = attemptedUser._id;
+        console.log('req.session', req.session);
+        resolve('Congrats');
+      } else {
+        reject('Invalid username / password.');
+      }
+    });
 };
 
 User.prototype.register = function () {
-  // Validate user data
   this.cleanUp();
   this.validate();
 
   if (!this.errors.length) {
-    // hash password
+    // hash user password
     let salt = bcrypt.genSaltSync(10);
     this.data.password = bcrypt.hashSync(this.data.password, salt);
     usersCollection.insertOne(this.data);

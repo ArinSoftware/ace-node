@@ -4,11 +4,13 @@ const app = express();
 
 app.use(
   session({
-    secret: 'JS is NOT cool!',
+    secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
   })
 );
+
+const router = require('./router');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -19,7 +21,6 @@ app.set('view engine', 'ejs');
 // set statis files folder
 app.use(express.static('public'));
 
-const router = require('./router');
 app.use('/', router);
 
 module.exports = app;
