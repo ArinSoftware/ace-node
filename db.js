@@ -1,9 +1,20 @@
 require('dotenv').config();
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
-const client = new MongoClient(process.env.MONGO_URL);
+mongoose
+  .connect(process.env.MONGO_URL, {
+    dbName: 'ComplexApp',
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('DB Connected Successfully');
+  });
 
-// Database Name
+const app = require('./app');
+app.listen(process.env.PORT);
+
+/* // Database Name
 const dbName = 'ComplexApp';
 
 function main() {
@@ -19,3 +30,4 @@ function main() {
 }
 
 main();
+ */
