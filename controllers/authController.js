@@ -20,14 +20,13 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log('req.body', req.body);
-
     await User.findOne({ email }, (err, user) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, same) => {
           if (same) {
             console.log('same', same);
-            res.status(200).send('LOGGED IN');
+            req.session.userId = user._id;
+            res.status(200).redirect('/');
           }
         });
       }

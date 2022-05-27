@@ -10,6 +10,13 @@ app.use(
   })
 );
 
+global.isLoggedIn = null;
+
+app.use('*', (req, res, next) => {
+  isLoggedIn = req.session.userId;
+  next();
+});
+
 const router = require('./router');
 
 app.use(express.urlencoded({ extended: false }));
