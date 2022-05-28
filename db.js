@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose
+const db = mongoose
   .connect(process.env.MONGO_URL, {
     dbName: 'ComplexApp',
     useNewUrlParser: true,
