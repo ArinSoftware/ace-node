@@ -1272,3 +1272,65 @@ a:focus {
   color: #ffffff;
 }
 /*# sourceMappingURL=style.css.map */
+
+.modal input.message-box {
+  height: 120px;
+  border-radius: 15px;
+}
+
+.contact_section form, .modal form {
+  padding-right: 35px;
+}
+
+.contact_section input, .modal input {
+  width: 100%;
+  border: none;
+  height: 50px;
+  margin-bottom: 25px;
+  padding-left: 25px;
+  background-color: #ffffff;
+  outline: none;
+  color: #101010;
+  border-radius: 50px;
+}
+
+.modal input {
+	background-color: #DDB63B;
+}
+
+.modal {
+  z-index: 999;
+}
+
+.contact_section input::-webkit-input-placeholder, .modal input::-webkit-input-placeholder {
+  color: #131313;
+}
+
+.contact_section input:-ms-input-placeholder, .modal input:-ms-input-placeholder {
+  color: #131313;
+}
+
+.contact_section input::-ms-input-placeholder, .modal input::-ms-input-placeholder {
+  color: #131313;
+}
+
+.contact_section input::placeholder, .modal input::placeholder {
+  color: #131313;
+}
+
+.contact_section input.message-box, .modal input.message-box {
+  height: 120px;
+  border-radius: 15px;
+}
+
+.contact_section button, .modal button {
+  padding: 15px 65px;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  background: #f0b016;
+  margin: auto;
+  margin-top: 15px;
+  font-size: 15px;
+}
