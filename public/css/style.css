@@ -1278,11 +1278,11 @@ a:focus {
   border-radius: 15px;
 }
 
-.contact_section form, .modal form {
+.contact_section form {
   padding-right: 35px;
 }
 
-.contact_section input, .modal input {
+.contact_section input {
   width: 100%;
   border: none;
   height: 50px;
@@ -1294,36 +1294,29 @@ a:focus {
   border-radius: 50px;
 }
 
-.modal input {
-	background-color: #DDB63B;
-}
 
-.modal {
-  z-index: 999;
-}
-
-.contact_section input::-webkit-input-placeholder, .modal input::-webkit-input-placeholder {
+.contact_section input::-webkit-input-placeholder {
   color: #131313;
 }
 
-.contact_section input:-ms-input-placeholder, .modal input:-ms-input-placeholder {
+.contact_section input:-ms-input-placeholder{
   color: #131313;
 }
 
-.contact_section input::-ms-input-placeholder, .modal input::-ms-input-placeholder {
+.contact_section input::-ms-input-placeholder {
   color: #131313;
 }
 
-.contact_section input::placeholder, .modal input::placeholder {
+.contact_section input::placeholder {
   color: #131313;
 }
 
-.contact_section input.message-box, .modal input.message-box {
+.contact_section input.message-box {
   height: 120px;
   border-radius: 15px;
 }
 
-.contact_section button, .modal button {
+.contact_section button {
   padding: 15px 65px;
   outline: none;
   border: none;

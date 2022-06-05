@@ -1,0 +1,51 @@
+<%- include('partials/_header'); %>
+
+  <body class="sub_page">
+    <div class="hero_area">
+
+      <div class="main slick_main">
+      </div>
+      <!-- header section strats -->
+      <%- include('partials/_navigation'); %>
+        <!-- end header section -->
+    </div>
+
+
+    <!-- contact section -->
+
+    <section class="contact_section layout_padding">
+      <div class="container ">
+        <div class="">
+          <h2 style="text-align:center;" class="">
+            Add New Photo
+          </h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="offset-md-2 col-md-8">
+            <form action="">
+              <div>
+                <input type="text" placeholder="Photo Name" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Photo Description" />
+              </div>
+              <div>
+                <input type="file" placeholder="Email" />
+              </div>
+              <div class="d-flex ">
+                <button>
+                  UPLOAD PHOTO
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end contact section -->
+
+    <!-- info section -->
+    <%- include('partials/_footer'); %>
