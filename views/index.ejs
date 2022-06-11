@@ -128,37 +128,6 @@
         <!-- end slider section -->
     </div>
 
-    <!-- about section -->
-
-    <section class="about_section layout_padding">
-      <div class="container-fluid">
-        <div class="box">
-          <div class="img_container">
-            <div class="img-box b1">
-              <img src="/images/a-1.jpg" alt="">
-            </div>
-            <div class="img-box b2">
-              <img src="/images/a-2.jpg" alt="">
-            </div>
-          </div>
-          <div class="detail-box">
-            <h2>
-              About Our Studio
-            </h2>
-            <p>
-              There are many variations of passages of Lorem Ipsum
-              There are many variations of
-              passages of Lorem Ipsum
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end about section -->
-
     <!-- portfolio section -->
 
     <section class="portfolio_section layout_padding-top">
@@ -370,55 +339,40 @@
       <div class="container">
         <div class="heading_container">
           <h2>
-            Letest News
+            Latest Photos
           </h2>
           <p>
             Lorem Ipsum available, but the majority
           </p>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <div class="box">
-              <div class="img-box">
-                <img src="/images/n-1.jpg" alt="">
-                <div class="date">
+
+          <% for (let i=0; i < photos.length; i++) { %>
+            <div class="col-md-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/images/n-1.jpg" alt="">
+                  <div class="date">
+                    <h5>
+                      <%= photos[i].uploadedAt %>
+                    </h5>
+                  </div>
+                </div>
+                <div class="detail-box">
                   <h5>
-                    06 Feb 2020
+                    <%= photos[i].name %>
                   </h5>
+                  <p>
+                    <%= photos[i].description %>
+                  </p>
                 </div>
               </div>
-              <div class="detail-box">
-                <h5>
-                  Teration in some form, by injected humour
-                </h5>
-                <p>
-                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                  alteration in some form, by injected humour, or randomised
-                </p>
-              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box">
-              <div class="img-box">
-                <img src="/images/n-2.jpg" alt="">
-                <div class="date">
-                  <h5>
-                    06 Feb 2020
-                  </h5>
-                </div>
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Teration in some form, by injected humour
-                </h5>
-                <p>
-                  There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                  alteration in some form, by injected humour, or randomised
-                </p>
-              </div>
-            </div>
-          </div>
+            <% } %>
+
+
+
+
         </div>
       </div>
     </section>

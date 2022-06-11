@@ -1,6 +1,8 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const photoRouter = require('./routes/photoRouter');
+const pageRouter = require('./routes/pageRouter');
 const app = express();
 
 app.use(
@@ -22,8 +24,6 @@ app.use('*', (req, res, next) => {
   next();
 });
 
-const router = require('./router');
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -33,6 +33,7 @@ app.set('view engine', 'ejs');
 // set statis files folder
 app.use(express.static('public'));
 
-app.use('/', router);
+app.use('/', pageRouter);
+app.use('/photos', photoRouter);
 
 module.exports = app;
