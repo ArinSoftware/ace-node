@@ -4,10 +4,7 @@ exports.getHomePage = async (req, res) => {
   try {
     console.log('SESSION USER ID::', req.session.userId);
 
-    const photos = await Photo.find().limit(2);
-
-    console.log('PHOTOS::', photos);
-
+    const photos = await Photo.find({}).sort({ uploadedAt: 'desc' }).limit(2);
     res.status(200).render('index', {
       page_name: 'index',
       photos,

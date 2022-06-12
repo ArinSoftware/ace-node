@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Photo = require('../models/Photo');
 const bcrypt = require('bcryptjs');
 
 exports.createUser = async (req, res) => {
@@ -24,7 +25,6 @@ exports.loginUser = async (req, res) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, same) => {
           if (same) {
-            console.log('same', same);
             req.session.userId = user._id;
             res.status(200).redirect('/dashboard');
           }
@@ -54,8 +54,10 @@ exports.logoutUser = (req, res) => {
 exports.getDashboardPage = async (req, res) => {
   console.log('getDashboardPage');
   const user = await User.findOne({ _id: req.session.userId });
+  const photos = await Photo.find({ user: req.session.userId });
   res.status(200).render('dashboard', {
     page_name: 'dashboard',
     user,
+    photos,
   });
 };

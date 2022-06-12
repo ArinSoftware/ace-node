@@ -8,8 +8,12 @@ const getUploadPhotoPage = (req, res) => {
 
 const createPhoto = async (req, res) => {
   try {
-    const photo = await Photo.create(req.body);
-    res.status(201).json({ status: 'success', photo });
+    const photo = await Photo.create({
+      name: req.body.name,
+      description: req.body.description,
+      user: req.session.userId,
+    });
+    res.status(201).redirect('/dashboard');
   } catch (err) {
     res.status(500).json({ status: 'fail', err });
   }
