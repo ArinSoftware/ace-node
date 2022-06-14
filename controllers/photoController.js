@@ -22,7 +22,20 @@ const createPhoto = async (req, res) => {
 const getAllPhotos = async (req, res) => {
   try {
     const photos = await Photo.find();
-    res.status(201).json({ status: 'success', photo });
+    res.status(200).json({ status: 'success', photo });
+  } catch (err) {
+    res.status(500).json({ status: 'fail', err });
+  }
+};
+
+const getPhoto = async (req, res) => {
+  console.log('getPHOTO');
+  try {
+    const photo = await Photo.findById({ _id: req.params.id }).populate('user');
+    res.status(200).render('photo', {
+      photo,
+      page_name: 'photos',
+    });
   } catch (err) {
     res.status(500).json({ status: 'fail', err });
   }
@@ -32,4 +45,5 @@ module.exports = {
   getUploadPhotoPage,
   createPhoto,
   getAllPhotos,
+  getPhoto,
 };

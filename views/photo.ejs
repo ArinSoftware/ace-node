@@ -1,0 +1,54 @@
+<%- include('partials/_header'); %>
+
+  <body class="sub_page">
+    <div class="hero_area">
+
+      <!-- header section strats -->
+      <%- include('partials/_navigation'); %>
+        <!-- end header section -->
+    </div>
+
+    <section class="about_section layout_padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img style="width: 100%;" src="/images/a-2.jpg" alt="">
+          </div>
+          <div class="col-md-6">
+            <div class="box">
+              <div class="detail-box">
+                <h2>
+                  <%= photo.name %>
+                </h2>
+                <p>
+                  <%= photo.description %>
+                </p>
+                <div class="row">
+                  LIKE
+                </div>
+                <div style="display: flex; justify-content: space-between; ">
+
+                  <a href="">
+                    Edit Photo
+                  </a>
+                  <a id="deleteButton" href="">
+                    Delete Photo
+                  </a>
+
+                </div>
+                <div class="row mt-5">
+                  <div class="col-md-6">
+                    <h5>Artist: <%= photo.user.firstname %>
+                        <%= photo.user.lastname %>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- end about section -->
+    <%- include('partials/_footer'); %>

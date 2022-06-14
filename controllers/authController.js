@@ -52,7 +52,6 @@ exports.logoutUser = (req, res) => {
 };
 
 exports.getDashboardPage = async (req, res) => {
-  console.log('getDashboardPage');
   const user = await User.findOne({ _id: req.session.userId });
   const photos = await Photo.find({ user: req.session.userId });
   res.status(200).render('dashboard', {

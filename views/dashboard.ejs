@@ -55,14 +55,17 @@
           <% for (let i=0; i < photos.length; i++) { %>
             <div class="col-md-6">
               <div class="box">
-                <div class="img-box">
-                  <img src="/images/n-1.jpg" alt="">
-                  <div class="date">
-                    <h5>
-                      <%= photos[i].uploadedAt %>
-                    </h5>
+
+                <a href="/photos/<%= photos[i]._id %>">
+                  <div class="img-box">
+                    <img src="/images/n-1.jpg" alt="">
+                    <div class="date">
+                      <h5>
+                        <%= photos[i].uploadedAt %>
+                      </h5>
+                    </div>
                   </div>
-                </div>
+                </a>
                 <div class="detail-box">
                   <h5>
                     <%= photos[i].name %>
@@ -71,6 +74,8 @@
                     <%= photos[i].description %>
                   </p>
                 </div>
+
+
               </div>
             </div>
             <% } %>
