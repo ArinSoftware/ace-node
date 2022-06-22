@@ -31,7 +31,8 @@
                   <a href="">
                     Edit Photo
                   </a>
-                  <a id="deleteButton" href="">
+                  <a href="/photos/<%= photo.id %>?_method=DELETE" id="deleteButton"
+                    onclick="return confirm('ARE YOU SURE')">
                     Delete Photo
                   </a>
 

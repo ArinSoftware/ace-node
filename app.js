@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const methodOverride = require('method-override');
 const photoRouter = require('./routes/photoRouter');
 const pageRouter = require('./routes/pageRouter');
 const app = express();
@@ -32,6 +33,12 @@ app.set('view engine', 'ejs');
 
 // set statis files folder
 app.use(express.static('public'));
+
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  })
+);
 
 app.use('/', pageRouter);
 app.use('/photos', photoRouter);

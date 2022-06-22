@@ -29,7 +29,6 @@ const getAllPhotos = async (req, res) => {
 };
 
 const getPhoto = async (req, res) => {
-  console.log('getPHOTO');
   try {
     const photo = await Photo.findById({ _id: req.params.id }).populate('user');
     res.status(200).render('photo', {
@@ -41,9 +40,19 @@ const getPhoto = async (req, res) => {
   }
 };
 
+const deletePhoto = async (req, res) => {
+  try {
+    await Photo.findOneAndRemove({ _id: req.params.id });
+    res.status(200).redirect('/dashboard');
+  } catch (err) {
+    res.status(500).json({ status: 'fail', err });
+  }
+};
+
 module.exports = {
   getUploadPhotoPage,
   createPhoto,
   getAllPhotos,
   getPhoto,
+  deletePhoto,
 };
