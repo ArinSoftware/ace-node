@@ -49,10 +49,36 @@ const deletePhoto = async (req, res) => {
   }
 };
 
+const updatePhoto = async (req, res) => {
+  try {
+    const photo = await Photo.findOne({ _id: req.params.id });
+    res.status(200).render('edit-photo', {
+      photo,
+      page_name: 'photos',
+    });
+  } catch (err) {
+    res.status(500).json({ status: 'fail', err });
+  }
+};
+
+const putPhoto = async (req, res) => {
+  try {
+    const photo = await Photo.findOne({ _id: req.params.id });
+    photo.name = req.body.name;
+    photo.description = req.body.description;
+    photo.save();
+    res.status(200).redirect(`/photos/${req.params.id}`);
+  } catch (err) {
+    res.status(500).json({ status: 'fail', err });
+  }
+};
+
 module.exports = {
   getUploadPhotoPage,
   createPhoto,
   getAllPhotos,
   getPhoto,
   deletePhoto,
+  updatePhoto,
+  putPhoto,
 };

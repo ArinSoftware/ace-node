@@ -17,26 +17,24 @@
       <div class="container ">
         <div class="">
           <h2 style="text-align:center;" class="">
-            Add New Photo
+            EDIT Photo
           </h2>
         </div>
       </div>
       <div class="container">
         <div class="row">
           <div class="offset-md-2 col-md-8">
-            <form action="/photos" method="POST">
+            <form action="/photos/<%= photo._id %>?_method=PUT" method="POST">
               <div>
-                <input name="name" type="text" placeholder="Photo Name" />
+                <input name="name" value="<%= photo.name %>" type="text" placeholder="Photo Name" />
               </div>
               <div>
-                <input name="description" type="text" class="message-box" placeholder="Photo Description" />
-              </div>
-              <div>
-                <input type="file" name="image" class="form-control-file" />
+                <input name="description" value="<%= photo.description %>" type="text" class="message-box"
+                  placeholder="Photo Description" />
               </div>
               <div class="d-flex ">
-                <button>
-                  UPLOAD PHOTO
+                <button type="submit">
+                  UPDATE PHOTO
                 </button>
               </div>
             </form>
