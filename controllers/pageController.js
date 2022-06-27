@@ -14,6 +14,18 @@ exports.getHomePage = async (req, res) => {
   }
 };
 
+exports.getPhotosPage = async (req, res) => {
+  try {
+    const photos = await Photo.find({}).sort({ uploadedAt: 'desc' });
+    res.status(200).render('photos', {
+      page_name: 'photos',
+      photos,
+    });
+  } catch (err) {
+    res.status(500).json({ status: 'fail', err });
+  }
+};
+
 exports.getAboutPage = (req, res) => {
   res.status(200).render('about', {
     page_name: 'about',

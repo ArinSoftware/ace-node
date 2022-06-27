@@ -128,68 +128,52 @@
         <!-- end slider section -->
     </div>
 
-    <!-- portfolio section -->
+    <!-- news section -->
 
-    <section class="portfolio_section layout_padding-top">
+    <section class="news_section layout_padding">
       <div class="container">
         <div class="heading_container">
           <h2>
-            Our Portfolio
+            Latest Photos
           </h2>
           <p>
-            There are many variations of
+            Lorem Ipsum available, but the majority
           </p>
         </div>
-      </div>
-      <div class="portfolio_container slick-carousel">
-        <div class="box">
-          <img src="/images/p-1.jpg" alt="">
-          <div class="link-box">
-            <a href="">
-              <img src="/images/link.png" alt="">
-            </a>
-            <h6>
-              There are many
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/images/p-2.jpg" alt="">
-          <div class="link-box">
-            <a href="">
-              <img src="/images/link.png" alt="">
-            </a>
-            <h6>
-              There are many
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/images/p-3.jpg" alt="">
-          <div class="link-box">
-            <a href="">
-              <img src="/images/link.png" alt="">
-            </a>
-            <h6>
-              There are many
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/images/p-4.jpg" alt="">
-          <div class="link-box">
-            <a href="">
-              <img src="/images/link.png" alt="">
-            </a>
-            <h6>
-              There are many
-            </h6>
-          </div>
+        <div class="row">
+
+          <% for (let i=0; i < photos.length; i++) { %>
+            <div class="col-md-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/images/n-1.jpg" alt="">
+                  <div class="date">
+                    <h5>
+                      <%= photos[i].uploadedAt %>
+                    </h5>
+                  </div>
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <%= photos[i].name %>
+                  </h5>
+                  <p>
+                    <%= photos[i].description %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% } %>
+
+
+
+
         </div>
       </div>
     </section>
 
-    <!-- end portfolio section -->
+    <!-- end news section -->
+
 
     <!-- quality section -->
 
@@ -236,148 +220,8 @@
 
     <!-- end quality section -->
 
-    <!-- client section -->
-
-    <section class="client_section layout_padding">
-
-      <div class="container">
-        <div class="heading_container">
-          <h2>
-            Testimonial
-          </h2>
-          <p>
-            Lorem Ipsum available, but the majority
-          </p>
-        </div>
-        <div class="client_container">
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="sr-only">Next</span>
-          </a>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="/images/client.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h4>
-                      Believable
-                    </h4>
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable. If you There are many variations of passages of Lorem Ipsum available, but the
-                      majority
-                      have suffered alteration in some form, by injected humour, or randomised words which don't look
-                      even
-                      slightly believable. If you
-                    </p>
-                    <img src="/images/quote.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="/images/client.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h4>
-                      Believable
-                    </h4>
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable. If you There are many variations of passages of Lorem Ipsum available, but the
-                      majority
-                      have suffered alteration in some form, by injected humour, or randomised words which don't look
-                      even
-                      slightly believable. If you
-                    </p>
-                    <img src="/images/quote.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="/images/client.png" alt="">
-                  </div>
-                  <div class="detail-box">
-                    <h4>
-                      Believable
-                    </h4>
-                    <p>
-                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                      alteration in some form, by injected humour, or randomised words which don't look even slightly
-                      believable. If you There are many variations of passages of Lorem Ipsum available, but the
-                      majority
-                      have suffered alteration in some form, by injected humour, or randomised words which don't look
-                      even
-                      slightly believable. If you
-                    </p>
-                    <img src="/images/quote.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- end client section -->
 
 
-    <!-- news section -->
-
-    <section class="news_section layout_padding">
-      <div class="container">
-        <div class="heading_container">
-          <h2>
-            Latest Photos
-          </h2>
-          <p>
-            Lorem Ipsum available, but the majority
-          </p>
-        </div>
-        <div class="row">
-
-          <% for (let i=0; i < photos.length; i++) { %>
-            <div class="col-md-6">
-              <div class="box">
-                <div class="img-box">
-                  <img src="/images/n-1.jpg" alt="">
-                  <div class="date">
-                    <h5>
-                      <%= photos[i].uploadedAt %>
-                    </h5>
-                  </div>
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    <%= photos[i].name %>
-                  </h5>
-                  <p>
-                    <%= photos[i].description %>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <% } %>
-
-
-
-
-        </div>
-      </div>
-    </section>
-
-    <!-- end news section -->
 
 
     <!-- contact section -->

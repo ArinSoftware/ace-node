@@ -1,4 +1,5 @@
 const Photo = require('../models/Photo');
+const User = require('../models/User');
 
 const getUploadPhotoPage = (req, res) => {
   res.status(200).render('upload-photo', {
@@ -22,7 +23,7 @@ const createPhoto = async (req, res) => {
 const getAllPhotos = async (req, res) => {
   try {
     const photos = await Photo.find();
-    res.status(200).json({ status: 'success', photo });
+    res.status(200).json({ status: 'success', photos });
   } catch (err) {
     res.status(500).json({ status: 'fail', err });
   }
@@ -31,8 +32,18 @@ const getAllPhotos = async (req, res) => {
 const getPhoto = async (req, res) => {
   try {
     const photo = await Photo.findById({ _id: req.params.id }).populate('user');
+
+    let isOwnerLoggedIn = false;
+    if (req.session.userId) {
+      const user = await User.findById({ _id: req.session.userId });
+      isOwnerLoggedIn = String(user._id) == String(photo.user._id);
+    }
+
+    console.log('isOwnerLoggedIn', isOwnerLoggedIn);
+
     res.status(200).render('photo', {
       photo,
+      isOwnerLoggedIn,
       page_name: 'photos',
     });
   } catch (err) {

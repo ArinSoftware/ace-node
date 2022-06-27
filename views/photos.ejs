@@ -1,0 +1,68 @@
+<%- include('partials/_header'); %>
+
+  <body class="sub_page">
+    <div class="hero_area">
+      <!-- header section strats -->
+      <%- include('partials/_navigation'); %>
+        <!-- end header section -->
+    </div>
+
+
+    <!-- portfolio section -->
+
+    <section class="portfolio_section layout_padding-top">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Our Portfolio
+          </h2>
+          <p>
+            There are many variations of
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="news_section">
+      <div class="container">
+        <div class="row">
+
+
+          <% for (let i=0; i < photos.length; i++) { %>
+            <div class="col-md-6">
+              <div class="box">
+
+                <a href="/photos/<%= photos[i]._id %>">
+                  <div class="img-box">
+                    <img src="/images/n-1.jpg" alt="">
+                    <div class="date">
+                      <h5>
+                        <%= photos[i].uploadedAt %>
+                      </h5>
+                    </div>
+                  </div>
+                </a>
+                <div class="detail-box">
+                  <h5>
+                    <%= photos[i].name %>
+                  </h5>
+                  <p>
+                    <%= photos[i].description %>
+                  </p>
+                </div>
+
+
+              </div>
+            </div>
+            <% } %>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- end portfolio section -->
+
+    <!-- info section -->
+
+
+    <%- include('partials/_footer'); %>

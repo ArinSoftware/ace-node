@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get('/', pageController.getHomePage);
 router.get('/about', pageController.getAboutPage);
+router.get('/photos', pageController.getPhotosPage);
 router.get('/register', redirectMiddleware, pageController.getRegisterPage);
 router.get('/login', redirectMiddleware, pageController.getLoginPage);
 
