@@ -1,5 +1,12 @@
 <%- include('partials/_header'); %>
 
+  <!--   <script
+    type="text/javascript">window.setTimeout("document.getElementById('testoo').style.display='none';", 3000); </script> -->
+
+  <script type="text/javascript">window.setTimeout(function () {
+      $('#testoo').fadeOut('fast');
+    }, 3000); </script>
+
   <body class="sub_page">
     <div class="hero_area">
 
@@ -42,6 +49,11 @@
           </div>
 
 
+          <% messages.forEach(function (message) { %>
+            <div id="testoo" class="alert alert-success text-center" style="width: 100%;">
+              <%= message %>
+            </div>
+            <% }) %>
 
         </div>
     </section>

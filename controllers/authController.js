@@ -58,5 +58,6 @@ exports.getDashboardPage = async (req, res) => {
     page_name: 'dashboard',
     user,
     photos,
+    messages: req.flash('flashMessages'),
   });
 };

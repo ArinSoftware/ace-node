@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const photoRouter = require('./routes/photoRouter');
 const pageRouter = require('./routes/pageRouter');
@@ -17,6 +18,8 @@ app.use(
     }),
   })
 );
+
+app.use(flash());
 
 global.isLoggedIn = null;
 

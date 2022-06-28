@@ -14,7 +14,10 @@ const createPhoto = async (req, res) => {
       description: req.body.description,
       user: req.session.userId,
     });
-    res.status(201).redirect('/dashboard');
+    req.flash('flashMessages', 'Photo created successfully');
+    req.session.save(() => {
+      res.status(201).redirect('/dashboard');
+    });
   } catch (err) {
     res.status(500).json({ status: 'fail', err });
   }
