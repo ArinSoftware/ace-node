@@ -44,9 +44,12 @@
 
                     <div class="row mt-5">
                       <div class="col-md-6">
-                        <h5>Artist: <%= photo.user.firstname %>
-                            <%= photo.user.lastname %>
-                        </h5>
+                        <a href="/dashboard/<%= photo.user._id %>">
+                          <h5>Artist: <%= photo.user.firstname %>
+                              <%= photo.user.lastname %>
+                          </h5>
+                        </a>
+
                       </div>
                     </div>
               </div>

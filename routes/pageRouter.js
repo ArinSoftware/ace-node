@@ -16,6 +16,7 @@ router.post('/register', authController.createUser);
 router.post('/login', authController.loginUser);
 router.get('/logout', authController.logoutUser);
 router.get('/dashboard', authMiddleware, authController.getDashboardPage);
+router.get('/dashboard/:id', authMiddleware, authController.getProfilePage);
 
 router.get('/upload-photo', authMiddleware, photoController.getUploadPhotoPage);
 

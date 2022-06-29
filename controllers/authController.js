@@ -45,19 +45,41 @@ exports.logoutUser = (req, res) => {
     if (err) {
       console.log('ERR::', err);
     } else {
-      console.log('TESTOOOO');
       res.redirect('/');
     }
   });
 };
 
 exports.getDashboardPage = async (req, res) => {
+  let isProfile = false;
+
   const user = await User.findOne({ _id: req.session.userId });
   const photos = await Photo.find({ user: req.session.userId });
   res.status(200).render('dashboard', {
     page_name: 'dashboard',
     user,
     photos,
+    isProfile,
+    messages: req.flash('flashMessages'),
+  });
+};
+
+exports.getProfilePage = async (req, res) => {
+  let isProfile = true;
+  if (req.session.userId == req.params.id) {
+    isProfile = false;
+  }
+
+  console.log('ISPROFILE', isProfile);
+
+  //const user = await User.findOne({ _id: req.session.userId });
+  const user = await User.findById({ _id: req.params.id });
+  const photos = await Photo.find({ user: req.params.id });
+  res.status(200).render('dashboard', {
+    page_name: 'dashboard',
+    user,
+    photos,
+    isProfile,
     messages: req.flash('flashMessages'),
   });
 };

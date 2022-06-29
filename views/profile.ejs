@@ -1,11 +1,5 @@
 <%- include('partials/_header'); %>
 
-  <!--   <script
-    type="text/javascript">window.setTimeout("document.getElementById('testoo').style.display='none';", 3000); </script> -->
-
-  <script type="text/javascript">window.setTimeout(function () {
-      $('#testoo').fadeOut('fast');
-    }, 3000); </script>
 
   <body class="sub_page">
     <div class="hero_area">
@@ -31,7 +25,7 @@
             <div class="col-md-8">
               <div class="detail-box">
                 <h2>
-                  <%= user.firstname %> 's Dashboard
+                  <%= user.firstname %> 's Profile
                 </h2>
                 <p>
                   There are many variations of passages of Lorem Ipsum
@@ -39,18 +33,15 @@
                   passages of Lorem Ipsum
                 </p>
 
-                <% if (!isProfile) { %>
-
-                  <div style="display:flex; justify-content: end;" class="btn-box">
-                    <a href="/upload-photo">
-                      Add New Photo
-                    </a>
-                  </div>
-                  <% } %>
-
               </div>
             </div>
-
+            <div class="col-md-12">
+              <div class="profile-nav nav nav-tabs pt-2 mb-4">
+                <a href="#" class="profile-nav-link nav-item nav-link ">Posts: 3</a>
+                <a href="#" class="profile-nav-link nav-item nav-link active">Followers: 3</a>
+                <a href="#" class="profile-nav-link nav-item nav-link ">Following: 2</a>
+              </div>
+            </div>
           </div>
 
 
@@ -61,37 +52,6 @@
             <% }) %>
 
         </div>
-        <% if (!isProfile) { %>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="profile-nav nav nav-tabs pt-2 mb-4">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#follower" role="tab"
-                      aria-controls="profile" aria-selected="false">Followers: 10</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#following" role="tab"
-                      aria-controls="contact" aria-selected="false">Following: 8</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="follower" role="tabpanel" aria-labelledby="profile-tab">
-                  Followers</div>
-                <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="contact-tab">Following</div>
-              </div>
-
-            </div>
-          </div>
-
-          <% } %>
-
-            <% if (isProfile) { %>
-              <a href="/#">
-                FOLLOW
-              </a>
-              <% } %>
     </section>
     <!-- end about section -->
 
