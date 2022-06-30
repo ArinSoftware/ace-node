@@ -78,8 +78,23 @@
               </div>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="follower" role="tabpanel" aria-labelledby="profile-tab">
-                  Followers</div>
-                <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="contact-tab">Following</div>
+                  <ul>
+                    <% for (let i=0; i < user.followers.length; i++) { %>
+                      <li>
+                        <%= user.followers[i].firstname %>
+                      </li>
+                      <% } %>
+                  </ul>
+                </div>
+                <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="contact-tab">
+                  <ul>
+                    <% for (let i=0; i < user.followings.length; i++) { %>
+                      <li>
+                        <%= user.followings[i].firstname %>
+                      </li>
+                      <% } %>
+                  </ul>
+                </div>
               </div>
 
             </div>
@@ -88,9 +103,16 @@
           <% } %>
 
             <% if (isProfile) { %>
-              <a href="/#">
-                FOLLOW
-              </a>
+              <form method="POST" action="/dashboard/follow/<%= user._id %>">
+                <button class="btn btn-sm btn-primary">
+                  FOLLOW
+                </button>
+              </form>
+              <form>
+                <button class="btn btn-sm btn-warning">
+                  UNFOLLOW
+                </button>
+              </form>
               <% } %>
     </section>
     <!-- end about section -->

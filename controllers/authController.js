@@ -53,8 +53,15 @@ exports.logoutUser = (req, res) => {
 exports.getDashboardPage = async (req, res) => {
   let isProfile = false;
 
-  const user = await User.findOne({ _id: req.session.userId });
+  const user = await User.findOne({ _id: req.session.userId }).populate(
+    'followings'
+  );
   const photos = await Photo.find({ user: req.session.userId });
+
+  console.log('USERRR', user);
+  console.log('USERRR', user.followings);
+  console.log('user.followings[0].firstname', user.followings[0].firstname);
+
   res.status(200).render('dashboard', {
     page_name: 'dashboard',
     user,
@@ -82,4 +89,19 @@ exports.getProfilePage = async (req, res) => {
     isProfile,
     messages: req.flash('flashMessages'),
   });
+};
+
+exports.followUser = async (req, res) => {
+  const follower = await User.findById(req.session.userId);
+  const following = await User.findById(req.params.id);
+
+  await follower.followings.push({ _id: following._id });
+  await follower.save();
+  await following.followers.push({ _id: follower._id });
+  await following.save();
+
+  console.log('req.session.userId', req.session.userId);
+  console.log('req.params.id', req.params.id);
+  console.log('follower', follower);
+  console.log('following', following);
 };
